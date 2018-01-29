@@ -1,0 +1,39 @@
+v   Count tweets one hour
+v   Count tweets 24 hour
+v   Trending hashtags
+v   Trending mentions name
+v   Trending keywords
+v   Active authors
+x   Overall graph
+
+ Instant Input
+    ? Author name
+x       Location (NW/SE)
+v       Followers count
+v       Tweets
+x       Lead search to Google
+    ? Hashtags
+v       Hashtags timeline
+v       Related hashtags
+v       Sample Tweets
+x       Lead search to Google
+x       Graph
+    ? Mentions name
+v       Mentions timeline
+v       Related mentions
+v       Sample Tweets
+x       Lead search to Google
+x       Graph
+    ? Keywords
+v       Keywords timeline
+v       Related keywords
+v       Sample Tweets
+x       Lead search to Google
+x       Graph
+    ? Datetime
+v       Count tweets
+v       Trending hashtags
+v       Trending mentions name
+v       Trending keywords
+v       Sample Tweets
+x       Graph
