@@ -1,0 +1,6 @@
+git add .
+git commit -m "some commit message"
+git pull origin <Name of the branch>
+git push origin <Name of the branch>
+
+this is how u make a change in git
