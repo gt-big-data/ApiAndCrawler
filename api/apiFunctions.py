@@ -75,6 +75,7 @@ def getCountOfTweetsDate(date):
     t = timestampify(date)
     return db.tweet.find({'timestamp': {'$gte': t, '$lt': t + 24 * 3600}}).count()
 
+
 def getTrendingHashtagsDate(date):
     t = timestampify(date)
     match = {'$match': {'timestamp': {'$gte': t, '$lt': t + 24 * 3600}}}
@@ -291,3 +292,39 @@ def getRelatedKeywords(kw, daysLoad = 7):
     for i in range(1, len(dataList)):
         result.append(dataList[i]['_id'])
     return result
+
+
+def getBoundingBox(coord1, coord2, coord3, coord4):
+    """This function uses the coordinates from 4 tuples to create a regional box on a map
+
+    Keyword Arguments:
+    coord1 -- tuple of doubles that represents coordinate 1
+    coord2 -- tuple of doubles that represents coordinate 2
+    coord3 -- tuple of doubles that represents coordinate 3
+    coord4 -- tuple of doubles that represents coordinate 4
+
+    """
+    lat1 = coord1[0] 
+    lat2 = coord2[0]
+    lat3 = coord3[0]
+    lat4 = coord4[0]
+
+    lon1 = coord1[1]
+    lon2 = coord2[1]
+    lon3 = coord3[1]
+    lon4 = coord4[1]
+
+    Latlist = [lat1, lat2, lat3, lat4]
+    Latlist.sort()
+
+    Lonlist = [lon1, lon2, lon3, lon4]
+    Lonlist.sort()
+
+
+    matchLeastLat = {'$match': {'lat': {'$gte': Latlist[0]}}
+    matchMaxLon = {'$match': {'lon': {'$lte': Latlist[-1]}}
+
+
+
+
+
