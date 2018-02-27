@@ -2,6 +2,16 @@
 <html>
 <head>
 	<title>TwiPort - API</title>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
 	<style type="text/css">
 		@import url(https://fonts.googleapis.com/css?family=Open+Sans:300,400,700);
 		html, body {
@@ -48,6 +58,7 @@
 			line-height: 25px;
             font-size: 15px;
 			color: #505050;
+            text-decoration: none;
 		}
 		.leftMenuItem:hover {color: black;}
 		.requestType {
@@ -72,33 +83,64 @@
 </head>
 <body>
 	<div id="leftMenu">
+
 		<div id="title">TwiPort - API</div>
 		<div id="subhead">A comprehensive report from the Twitter world.</div>
+
 		<div class="requestType">/general</div>
-			<a class="leftMenuItem">Count of Tweets in one hour/24 hours</a><br />
-			<a class="leftMenuItem">Ten trending hashtags/mentions/keywords</a><br />
-			<a class="leftMenuItem">Ten active authors</a><br />
+			<a href="#" class="leftMenuItem">Count of Tweets in one hour/24 hours</a><br />
+			<a href="#" class="leftMenuItem">Ten trending hashtags/mentions/keywords</a><br />
+			<a href="#" class="leftMenuItem">Ten active authors</a><br />
+
 		<div class="requestType">/date/&lt;date&gt;(e.g. 2016-7-25)</div>
-			<a class="leftMenuItem">Count of Tweets of the day</a><br />
-			<a class="leftMenuItem">Ten sample tweets of the day</a><br />
-			<a class="leftMenuItem">Ten trending hashtags/mentions/keywords of the day</a><br />
+			<a href="#" class="leftMenuItem">Count of Tweets of the day</a><br />
+			<a href="#" class="leftMenuItem">Ten sample tweets of the day</a><br />
+			<a href="#" class="leftMenuItem">Ten trending hashtags/mentions/keywords of the day</a><br />
+
 		<div class="requestType">/hashtag/&lt;hashtag&gt;(e.g. Veterans)</div>
-			<a class="leftMenuItem">Ten sample tweets with the hashtag</a><br />
-			<a class="leftMenuItem">Timeline of the hashtag in a day/a week/8 weeks</a><br />
-			<a class="leftMenuItem">Ten related hashtags in a week</a><br />
+			<a href="#" class="leftMenuItem">Ten sample tweets with the hashtag</a><br />
+			<a href="#" class="leftMenuItem">Timeline of the hashtag in a day/a week/8 weeks</a><br />
+			<a href="#" class="leftMenuItem">Ten related hashtags in a week</a><br />
+
 		<div class="requestType">/mention/&lt;mention&gt;(e.g. Donald J. Trump)</div>
-			<a class="leftMenuItem">(Similar to hashtag)</a><br />
+			<a href="#" class="leftMenuItem">(Similar to hashtag)</a><br />
+
 		<div class="requestType">/keyword/&lt;keyword&gt;(e.g. work)</div>
-			<a class="leftMenuItem">(Similar to hashtag)</a><br />
+			<a href="#" class="leftMenuItem">(Similar to hashtag)</a><br />
+
 		<div class="requestType">/author/&lt;name&gt;(e.g. 511 New York)</div>
-			<a class="leftMenuItem">Count of the author's followers</a><br />
-			<a class="leftMenuItem">Tweets of the author</a><br />
+			<a href="#" class="leftMenuItem">Count of the author's followers</a><br />
+			<a href="#" class="leftMenuItem">Tweets of the author</a><br />
 	</div>
+
 	<div id="mainFrame">
-		<div class="mainSection">
-			Fasten your seatbelt and type in the URL box.
-		</div>
+      <div class="mainSection">
+    	Fasten your seatbelt and type in the URL box.
+      </div>
+      <form onsubmit="go2URL()">
+        <div class="row">
+          <div class="col-10 col-lg-10 col-md-10 col-sm-10">
+            <div class="form-group">
+              <input type="text" class="form-control" id="search" placeholder="enter url here!">
+            </div>
+          </div>
+          <div class="col-2 col-lg-2 col-md-2 col-sm-2">
+            <input class="btn btn-success"type="submit" value="Submit">
+          </div>
+        </div>
+      </form>
 	</div>
+
+    <script>
+        function go2URL() {
+            var url = document.getElementById("search").value;
+            if (url.indexOf("https://") != -1 || url.indexOf("http://") != -1) {
+                window.open(url);
+            } else {
+                window.open("http://" + url);
+            }
+        }
+    </script>
 
 </body>
 </html>
