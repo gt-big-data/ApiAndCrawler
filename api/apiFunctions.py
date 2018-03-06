@@ -1,5 +1,6 @@
 from dbco import *
 import time
+import math
 
 def getCountOfTweetsXHours(hours):
     return db.tweet.find({'timestamp': {'$gte': time.time() - int(hours) * 3600}}).count()
@@ -304,15 +305,15 @@ def getBoundingBox(coord1, coord2, coord3, coord4):
     coord4 -- tuple of doubles that represents coordinate 4
 
     """
-    lat1 = coord1[0] 
-    lat2 = coord2[0]
-    lat3 = coord3[0]
-    lat4 = coord4[0]
+    lon1 = coord1[0] 
+    lon2 = coord2[0]
+    lon3 = coord3[0]
+    lon4 = coord4[0]
 
-    lon1 = coord1[1]
-    lon2 = coord2[1]
-    lon3 = coord3[1]
-    lon4 = coord4[1]
+    lat1 = coord1[1]
+    lat2 = coord2[1]
+    lat3 = coord3[1]
+    lat4 = coord4[1]
 
     Latlist = [lat1, lat2, lat3, lat4]
     Latlist.sort()
@@ -321,10 +322,26 @@ def getBoundingBox(coord1, coord2, coord3, coord4):
     Lonlist.sort()
 
 
-    matchLeastLat = {'$match': {'lat': {'$gte': Latlist[0]}}
-    matchMaxLon = {'$match': {'lon': {'$lte': Latlist[-1]}}
+    matchLeastLat = {'$match': {'lat': {'$gte': Latlist[0]}}}
+    matchMaxLon = {'$match': {'lon': {'$lte': Lonlist[-1]}}}
+    matchLeastLon = {'match': {'lon': {'$gte': Lonlist[0]}}}
+    matchMaxLat = {'$match': {'lat': {'$lte': Latlist[-1]}}}
 
 
 
 
+
+
+def getBoundingCircle(center, outer):
+    """we need to filter the tweet object by lon and lat
+    to get the tweets inside the circular region
+    """
+    x = outer[0] - center[0]
+    y = outer[1] - center[1]
+
+    distanceBetween = math.sqrt(x**2 + y**2)
+
+    db.tweet.places.find(
+   { loc: { $geoWithin: { $center: [ [center[0], center[1]], distanceBetween] } } }
+)
 
