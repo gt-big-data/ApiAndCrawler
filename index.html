@@ -12,6 +12,7 @@
 		<div id="map"></div>
 
 		<script>
+            var coords = [];
             var counter = 0;
 			function initMap() {
                 var uluru = {lat: 39.731879, lng: -101.614792};
@@ -21,10 +22,16 @@
                 });
 
                 google.maps.event.addListener(map, 'click', function(event) {
+                    coords.push(event.latLng);
+                    console.log(coords);
                 	returnCoords(map, event.latLng);
                     counter = counter + 1;
                     if (counter >= 2) {
                         google.maps.event.clearListeners(map, 'click');
+                        var rect = new google.maps.Rectangle({
+                            map: map,
+                            bounds: new google.maps.LatLngBounds(coords[0],coords[1])
+                        });
                     }
                 });
             }
