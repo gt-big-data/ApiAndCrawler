@@ -1,5 +1,4 @@
 flask
-json
 nltk
 pymongo
 requests
