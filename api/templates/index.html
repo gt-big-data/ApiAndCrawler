@@ -2,7 +2,19 @@
 <html>
 <head>
 	<title>TwiPort - API</title>
-	<style type="text/css">
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+    <!-- Font Awesome 5 CDN -->
+    <script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+
+	<style>
 		@import url(https://fonts.googleapis.com/css?family=Open+Sans:300,400,700);
 		html, body {
 			height: 100%;
@@ -48,6 +60,7 @@
 			line-height: 25px;
             font-size: 15px;
 			color: #505050;
+            text-decoration: none;
 		}
 		.leftMenuItem:hover {color: black;}
 		.requestType {
@@ -72,33 +85,65 @@
 </head>
 <body>
 	<div id="leftMenu">
+
 		<div id="title">TwiPort - API</div>
 		<div id="subhead">A comprehensive report from the Twitter world.</div>
+
 		<div class="requestType">/general</div>
-			<a class="leftMenuItem">Count of Tweets in one hour/24 hours</a><br />
-			<a class="leftMenuItem">Ten trending hashtags/mentions/keywords</a><br />
-			<a class="leftMenuItem">Ten active authors</a><br />
+			<a href="#" class="leftMenuItem">Count of Tweets in one hour/24 hours</a><br />
+			<a href="#" class="leftMenuItem">Ten trending hashtags/mentions/keywords</a><br />
+			<a href="#" class="leftMenuItem">Ten active authors</a><br />
+
 		<div class="requestType">/date/&lt;date&gt;(e.g. 2016-7-25)</div>
-			<a class="leftMenuItem">Count of Tweets of the day</a><br />
-			<a class="leftMenuItem">Ten sample tweets of the day</a><br />
-			<a class="leftMenuItem">Ten trending hashtags/mentions/keywords of the day</a><br />
+			<a href="#" class="leftMenuItem">Count of Tweets of the day</a><br />
+			<a href="#" class="leftMenuItem">Ten sample tweets of the day</a><br />
+			<a href="#" class="leftMenuItem">Ten trending hashtags/mentions/keywords of the day</a><br />
+
 		<div class="requestType">/hashtag/&lt;hashtag&gt;(e.g. Veterans)</div>
-			<a class="leftMenuItem">Ten sample tweets with the hashtag</a><br />
-			<a class="leftMenuItem">Timeline of the hashtag in a day/a week/8 weeks</a><br />
-			<a class="leftMenuItem">Ten related hashtags in a week</a><br />
+			<a href="#" class="leftMenuItem">Ten sample tweets with the hashtag</a><br />
+			<a href="#" class="leftMenuItem">Timeline of the hashtag in a day/a week/8 weeks</a><br />
+			<a href="#" class="leftMenuItem">Ten related hashtags in a week</a><br />
+
 		<div class="requestType">/mention/&lt;mention&gt;(e.g. Donald J. Trump)</div>
-			<a class="leftMenuItem">(Similar to hashtag)</a><br />
+			<a href="#" class="leftMenuItem">(Similar to hashtag)</a><br />
+
 		<div class="requestType">/keyword/&lt;keyword&gt;(e.g. work)</div>
-			<a class="leftMenuItem">(Similar to hashtag)</a><br />
+			<a href="#" class="leftMenuItem">(Similar to hashtag)</a><br />
+
 		<div class="requestType">/author/&lt;name&gt;(e.g. 511 New York)</div>
-			<a class="leftMenuItem">Count of the author's followers</a><br />
-			<a class="leftMenuItem">Tweets of the author</a><br />
+			<a href="#" class="leftMenuItem">Count of the author's followers</a><br />
+			<a href="#" class="leftMenuItem">Tweets of the author</a><br />
 	</div>
+
 	<div id="mainFrame">
-		<div class="mainSection">
-			Fasten your seatbelt and type in the URL box.
-		</div>
+      <div class="mainSection">
+    	Fasten your seatbelt and type in the URL box.
+      </div>
+      <br>
+      <form onsubmit="go2URL()">
+        <div class="row">
+          <div class="col-11 col-lg-11 col-md-11 col-sm-11">
+            <div class="input-group">
+              <input type="text" class="form-control" id="search" placeholder="enter url here!">
+                <span class="input-group-btn">
+                  <button class="btn btn-success" type="submit" value="submit"><i class="fas fa-search"></i></button>
+                </span>
+            </div>
+          </div>
+        </div>
+      </form>
 	</div>
+
+    <script>
+        function go2URL() {
+            var url = document.getElementById("search").value;
+            if (url.indexOf("https://") != -1 || url.indexOf("http://") != -1) {
+                window.open(url);
+            } else {
+                window.open("http://" + url);
+            }
+        }
+    </script>
 
 </body>
 </html>
