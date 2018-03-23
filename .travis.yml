@@ -2,6 +2,7 @@ language: python
 branches:
     only:
         - master
+        - rahul
 python:
     - "3.3"
     - "3.4"
@@ -9,5 +10,5 @@ python:
 install:
     - pip install -r requirements.txt
     - pip install -r requirements-test.txt
-scripts:
+script:
     - py.test tests/templateTest.py
