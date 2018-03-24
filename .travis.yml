@@ -14,3 +14,4 @@ script:
 - py.test tests/templateTest.py
 notifications:
     slack: bigdataclub:3NokIq4HnvzTmdUYeGA7qui4
+    email: false
