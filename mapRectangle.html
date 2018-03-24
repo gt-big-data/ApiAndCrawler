@@ -12,8 +12,11 @@
 		<div id="map"></div>
 
 		<script>
+
             var coords = [];
+            var markers = [];
             var counter = 0;
+
 			function initMap() {
                 var uluru = {lat: 39.731879, lng: -101.614792};
                 var map = new google.maps.Map(document.getElementById('map'), {
@@ -22,16 +25,28 @@
                 });
 
                 google.maps.event.addListener(map, 'click', function(event) {
+                    counter = counter + 1;
+                    if (counter > 2 && counter % 2 != 0) {
+                        deleteMarkers();
+                        rect.setMap(null);
+                        rect = null;
+                    }
                     coords.push(event.latLng);
                     console.log(coords);
                 	returnCoords(map, event.latLng);
-                    counter = counter + 1;
-                    if (counter >= 2) {
-                        google.maps.event.clearListeners(map, 'click');
-                        var rect = new google.maps.Rectangle({
-                            map: map,
-                            bounds: new google.maps.LatLngBounds(coords[0],coords[1])
-                        });
+                    
+                    if (counter % 2 == 0) {
+                        if(coords[0].lng() < coords[1].lng()) {
+                            rect = new google.maps.Rectangle({
+                                map: map,
+                                bounds: new google.maps.LatLngBounds(coords[0], coords[1])
+                            }); 
+                        } else if (coords[0].lng() > coords[1].lng()) {
+                            rect = new google.maps.Rectangle({
+                                map: map,
+                                bounds: new google.maps.LatLngBounds(coords[1], coords[0])
+                            });
+                        }
                     }
                 });
             }
@@ -45,7 +60,21 @@
             		content: 'Latitude: ' + location.lat() + '<br>Longitude: ' + location.lng()
             	});
             	infowindow.open(map,marker);
+                markers.push(marker);
             }
+
+            function setMapOnAll(map) {
+                for (var i = 0; i < markers.length; i++) {
+                    markers[i].setMap(map);
+                }
+            }
+
+            function deleteMarkers() {
+                setMapOnAll(null);
+                markers = [];
+                coords = [];
+            }
+
         </script>
 
         <script async defer
