@@ -10,8 +10,10 @@ python:
 install:
 - pip install -r requirements.txt
 - pip install -r requirements-test.txt
+- pip install pycodestyle
 script:
 - py.test tests/templateTest.py
+- pycodestyle api/*.py crawler/*.py
 notifications:
     slack: bigdataclub:3NokIq4HnvzTmdUYeGA7qui4
     email: false

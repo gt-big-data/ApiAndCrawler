@@ -1,8 +1,10 @@
-import twython, json, requests
+import twython
+import json
+import requests
 from tweet import *
 
-class TweetSampler(twython.TwythonStreamer):
 
+class TweetSampler(twython.TwythonStreamer):
     def on_success(self, data):
         if 'text' in data and 'id_str' in data and 'user' in data and 'id_str' in data['user'] and 'name' in data['user'] and 'followers_count' in data['user'] and 'timestamp_ms' in data and 'entities' in data:
             time = int(float(data['timestamp_ms']) / 1000.0)
@@ -32,7 +34,7 @@ class TweetSampler(twython.TwythonStreamer):
                 retweet_count = data['retweet_count']
             lon = 0
             lat = 0
-            if 'geo' in data and data['geo'] != None and 'coordinates' in data['geo']:
+            if 'geo' in data and data['geo'] is not None and 'coordinates' in data['geo']:
                 lat = data['geo']['coordinates'][0]
                 lon = data['geo']['coordinates'][1]
             else:
@@ -50,7 +52,9 @@ class TweetSampler(twython.TwythonStreamer):
     def on_error(self, status_code, data):
         print status_code
 
+
 BOUNDING_BOX = '-124.92,26.15,-66.59,48.96'
+
 
 def main():
     f = open('credentials.json')
