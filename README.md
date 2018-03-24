@@ -1,4 +1,5 @@
 # Twitter Project Documentation
+[![Build Status](https://travis-ci.org/gt-big-data/ApiAndCrawler.svg?branch=master)](https://travis-ci.org/gt-big-data/ApiAndCrawler)
 
 Welcome to the Big Data Club's twitter project!
 
