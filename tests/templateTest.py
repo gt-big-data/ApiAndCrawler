@@ -14,5 +14,10 @@ def test_HTML_validator():
                     'Content-Type': 'text/html; charset=UTF-8'})
 			assert(len(r.json()['messages']) == 0)
 
+
+def test_credentials():
+	# Do this locally, I just wrote this here to remind you to do it
+	assert(True)
+
 # if __name__ == '__main__':
 # 	test_HTML_validator()

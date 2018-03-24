@@ -1,14 +1,17 @@
 language: python
 branches:
-    only:
-        - master
-        - rahul
+  only:
+  - master
+  - rahul
 python:
-    - "3.3"
-    - "3.4"
-    - "3.5"
+- '3.3'
+- '3.4'
+- '3.5'
 install:
-    - pip install -r requirements.txt
-    - pip install -r requirements-test.txt
+- pip install -r requirements.txt
+- pip install -r requirements-test.txt
 script:
-    - py.test tests/templateTest.py
+- py.test tests/templateTest.py
+notifications:
+  slack:
+    secure: ar5BvcF8tCH2oAPT0wwsS/TTHJF+opH//vxqeE4BCMz4cH77QQBLI1QFJ8iCuDAuJGRtVRU7fK29TEwmzogTSFaUBbsRCZbw02cTX+hX7Mj5O6+Xd8URNFeKzA+kYnGanAxaN+b/rMWLV14nU7llYHV+Kzx/OuPwr6UfgLHZZO8J65RUHBRhy/qJRqTsJv01sQGfpG24eKEmny+8SGPLZeGR20jgdjXju59GSiJ32tiRcRxw6+Zxjk/7FsRVkmaFp6rJQznaeMbROQR4D8oJf9pm2RZX6ZqCv4NniAWQjt+KtvmIN0RK82jG3j+SgPG81KuqfcfdBsu6/TTQyIkcIy2OsdKBsugnI13Bp6fnjHrTi5OGqDdDsTGgcRyxG7wV8RIlVVPeWVgbm13daUNHKbQOlZJohAPtuiWk/Nak4JTwVvLAjbmdVH4Z1TAcTCKXHA1YNmsL2Hpq9TCVXYQ+CeSoEJJ1p9a+XHi7OaHWJVyz+4TaH/JrbIos+VPyC+lApqiDMXHqwsRNooeT8XFmINNYX1CjhyBYoznrdp+wjwA0fZDJSCg9jDWB9Iefn7qW2NPr1iJR2PfP718lqJWDtxK2U6SSSQZhvmEGyvQ7mFyJ5slG3RiFjef5JrmCXptKT9boa3/Ef2gX/fRajmzWPD6BIcNbQb+gVTUQywNQUdw=
