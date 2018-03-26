@@ -1,8 +1,8 @@
 language: python
 branches:
   only:
-  - master
-  - rahul
+  - gh-pages
+  - /.*/
 python:
 - '3.3'
 - '3.4'
