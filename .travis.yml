@@ -1,8 +1,7 @@
 language: python
 branches:
-  only:
-  - master
-  - rahul
+  except:
+  - crawler
 python:
 - '3.3'
 - '3.4'
@@ -11,7 +10,7 @@ install:
 - pip install -r requirements.txt
 - pip install -r requirements-test.txt
 - pip install pycodestyle
-script:
+scripts:
 - py.test tests/template_test.py
 - pycodestyle api/*.py crawler/*.py
 notifications:
